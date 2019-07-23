@@ -1,0 +1,166 @@
+
+How can you find out how much memory Linux is using? 
+From a command shell, use the "concatenate" command: cat /proc/meminfo for memory usage information. You should see a line starting something like Mem: 64655360, etc. This is the total memory Linux thinks it has available to use. 
+You can also use commands 
+free - m
+
+vmstat
+
+top
+
+htop
+
+•	Free command: This is the most simple and easy to use the command to check memory usage. For example: ‘$ free –m’, the option ‘m' displays all the data in MBs.
+•	/proc/meminfo: The next way to determine the memory usage is to read /proc/meminfo file. For example: ‘$ cat /proc/meminfo’
+•	Vmstat: This command basically lays out the memory usage statistics. For example: ‘$ vmstat –s’
+•	Top command: This command determines the total memory usage as well as also monitors the RAM usage.
+•	Htop: This command also displays the memory usage along with other details.
+
+grep command is a filters which is used to global search for regular expressions.
+ Grep stands for ‘global regular expression print’. This command is used for matching a regular expression against text in a file. This command performs pattern-based searching and only the matching lines are displayed as output. It makes use of options and parameters that are specified along with the command line.
+For example: Suppose we need to locate the phrase “our orders” in HTML file named as “order-listing.html”. Then the command will be as follows:
+$ grep “our orders” order-listing.html
+
+grep [options] pattern [files]
+ps command display the current process status of the system. And it displays the process id’s with some other related data also. 
+Syntax: 
+Ps [options]
+
+top command used to show the system process and it displays and update the sorted process information.
+
+netstat  command gives various information about the network and routing tables, interface statics and more about the system.
+
+lsof means List of file, we can know which file is opened by which process.
+#lsof
+
+Change command is used to change the permission of files and directories. It’s an important command so, I'll explain it briefly. Therefore, on the whole, there are three ty0pe of permission, read, write and execute and are represented by numbers as shown below.
+1.	4 - read permission
+2.	2 - write permission
+3.	1- execute permission
+some Linux networking and troubleshooting commands
+•	Hostname: To view the hostname (domain and IP address) of the machine and to set the hostname.
+•	Ping: To check if the remote server is reachable or not.
+•	ipconfig: To display and manipulate route and network interfaces. It displays network configuration. ‘ip’ is the replacement of ifconfig command.
+•	netstat: It displays network connections, routing tables, interface statistics. ‘ss’ is the replacement of netstat command which is used to get more information.
+•	Traceroute: It is network troubleshooting utility which is used to find the number of hops required for a particular packet to reach the destination.
+•	Tracepath: It is same as traceroute with a difference that it does not require root privileges.
+•	Dig: This command is used to query the DNS name servers for any task related to DNS lookup.
+•	nslookup: To find DNS related query.
+•	Route: It shows the details of the route table and manipulates IP routing table.
+•	mtr: This command combines ping and track path into a single command.
+•	Ifplugstatus: This command tells us whether the network cable is plugged in or not.
+
+
+Linux file content commands
+
+There are many commands present in Linux which are used to look at the contents of the file.
+Some of them are enlisted below
+•	head: Displays the beginning of the file
+•	tail: Displays the last part of the file
+•	cat: Concatenate files and print on the standard output.
+•	more: Displays the content in pager form and is used to view text in the terminal window one page or screen at a time.
+•	less: Displays the content in pager form and allows backward and single line movement.
+
+Linux Directory commands along with the description
+•	pwd: It is a built-in command which stands for ‘print working directory’. It displays the current working location, working path starting with / and directory of the user. Basically, it displays the full path to the directory you are currently in.
+•	Is: This command list out all the files in the directed folder.
+•	cd: This stands for ‘change directory’. This command is used to change to the directory you want to work from the present directory. We just need to type cd followed by the directory name to access that particular directory.
+•	mkdir: This command is used to create an entirely new directory.
+•	rmdir: This command is used to remove a directory from the system.
+
+
+A Docker Registry is a place where all the Docker Images will be stored and Docker Cloud and Docker Hub are the public registries where these images can be hosted upon. The Docker hub is the default storage for the Docker Images.
+
+The life cycle of the Docker container is as below:
+1.	Create a container.
+2.	Run the Docker container.
+3.	Pause the Container.
+4.	Unpause the Container.
+5.	Start the Container.
+6.	Stop the Container.
+7.	Restart the Container.
+8.	Kill the Container.
+9.	Destroy the Container.
+The Docker Objects are Docker Images, Services, and Docker Containers. A Docker Image is a read-only template with the configuration or runtime instructions for the Docker container. The Services allow scaling the containers across the different Docker Daemons.
+
+The Namespaces in Docker is a technology which provides isolatedworkspaces called the Container. Namespaces provide a layer of isolation for the Docker containers.
+
+
+
+
+A valid Declarative pipeline must be defined with the “pipeline” sentence and include the next required sections:
+•	agent
+•	stages
+•	stage
+•	steps
+ 
+Also, these are the available directives:
+•	environment (Defined at stage or pipeline level)
+•	input (Defined at stage level)
+•	options (Defined at stage or pipeline level)
+•	parallel
+•	parameters
+•	post
+•	script
+•	tools
+•	triggers
+•	when
+
+Agent
+ 
+Jenkins provides the ability to perform distributed builds by delegating them to “agent” nodes.
+
+Stages
+ 
+This section allows to generate different stages on your pipeline that will be visualized as different segments when the job is run.
+At least one “stage” section must be defined on the “stages” section. It will contain the work that the pipeline will execute.
+
+Steps
+ 
+The last required section is “steps”, which is defined into a “stage”. At least one step must be defined in the “steps” section.
+
+Environment
+ 
+This directive can be both defined at stage or pipeline level, which will determine the scope of its definitions. When “environment” is used at the “pipeline” level, its definitions will be valid for all of the pipeline steps. If instead it is defined within a “stage”, it will only be valid for the particular stage.
+
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
+
+2.node{
+		stage(Build){
+			bat"msbuild ${C:\\Jenkins\\my_project\\workspace\\test\\my_project.sln}"
+		}
+
+stage('Selenium tests'){
+dir(automation_path){//changes the path to “automation_path”
+bat"mvn clean test -Dsuite=SMOKE_TEST -Denvironment=QA"
+}  
+}
+}
+This script has the following stages:
+•	Build stage: 
+o	bat “msbuild…”: Builds the project by specifying a Visual studio solution file.
+•	Selenium tests stage: 
+o	dir(automation_path): Changes the current directory to the value set on the automation_path variable.
+o	bat “mvn clean test … “: Invokes maven to perform tests specified in the suite “SMOKE_TEST” and using the values defined on “QA”. Also, the “clean” flag  will clean the build.
+
